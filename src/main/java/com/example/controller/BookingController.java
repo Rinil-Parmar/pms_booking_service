@@ -47,6 +47,14 @@ public class BookingController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<Booking>> updateBooking(
+            @PathVariable UUID id,
+            @RequestBody Booking updatedBooking) {
+        ApiResponse<Booking> response = bookingService.updateBooking(id, updatedBooking);
+        return ResponseEntity.ok(response);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<String>> deleteBooking(@PathVariable UUID id) {
         ApiResponse<String> response = bookingService.deleteBooking(id);
